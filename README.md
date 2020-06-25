@@ -89,10 +89,10 @@ Ou coloque direto no arquivo `config/queue.php`
 
 #### Rodar migrate
 >
-    php artisan migrate --database=sqlite --path=database/migrations/servicemail
+    php artisan migrate --database=sqlite --path=database/migrations/jobs
 
 #### Rodar queue
-    php artisan queue:work sqlite
+    php artisan queue:work sqlite --tries=3
     
 ###### links úteis:
 - https://stackoverflow.com/questions/35535920/laravel-5-how-to-configure-the-queue-database-driver-to-connect-to-a-non-default
