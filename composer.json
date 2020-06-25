@@ -1,0 +1,39 @@
+{
+    "name": "gsferro/servicemail",
+    "description": "Service para envio via queue easy no Laravel",
+    "authors": [
+        {
+            "name": "Guilherme Ferro",
+            "email": "gsferroti@gmail.com"
+        },
+        {
+            "name": "Ailton Loures",
+            "email": "ailton.loures99@gmail.com"
+        },
+        {
+            "name": "Alexandre Ferraira",
+            "email": "shieldforce2@gmail.com"
+        }
+    ],
+    "require": {
+        "predis/predis": "1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gsferro\\ServiceMail\\": "src/"
+        },
+        "files": [
+            "src\\Helpers\\servicemail.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gsferro\\ServiceMail\\Providers\\ServiceMailServiceProvider"
+            ],
+            "aliases": {
+                "ChartsExcell": "Gsferro\\ServiceMail\\Facades\\ServiceMail"
+            }
+        }
+    }
+}
