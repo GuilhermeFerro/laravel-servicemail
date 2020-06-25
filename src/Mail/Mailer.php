@@ -10,20 +10,19 @@ use Illuminate\Queue\SerializesModels;
 class Mailer extends Mailable
 {
     use Queueable, SerializesModels;
-
+    /**
+     * @var MailerEvent
+     */
+    public $event;
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param MailerEvent $event
      */
 //    public function __construct(string $view, string $subject, $data)
     public function __construct(MailerEvent $event)
     {
-//        $this->view    = $view;
-//        $this->subject = $subject;
-//        $this->data    = $data;
-
-        $this->event    = $event;
+        $this->event = $event;
     }
 
     /**
@@ -34,14 +33,13 @@ class Mailer extends Mailable
     public function build()
     {
         $mail = $this->subject($this->event->subject)
-            ->view($this->event->view)
-            ->with('data', $this->event->data);
+            ->view($this->event->view, $this->event->data);
 
-        if (isset($this->event->attach)) {
+        if (!empty($this->event->attach)) {
             $mail = $mail->attach($this->event->attach);
         }
 
-        if (isset($this->event->cc)) {
+        if (!empty($this->event->cc)) {
             $mail = $mail->cc($this->event->cc);
         }
 

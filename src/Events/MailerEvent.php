@@ -19,6 +19,8 @@ class MailerEvent
     public $to;
     public $data;
     public $timeEvent;
+    public $attach;
+    public $cc;
 
     /**
      * Create a new Job instance.
@@ -29,7 +31,7 @@ class MailerEvent
      * @param $data
      * @param \DateTime|null $timeEvent
      * @param string $attach
-     * @param $cc
+     * @param string $cc
      */
     public function __construct(
         string $view,
@@ -38,7 +40,7 @@ class MailerEvent
         $data,
         ?\DateTime $timeEvent = null,
         string $attach = null,
-        $cc = null
+        string $cc = null
     )
     {
         $this->view      = $view;

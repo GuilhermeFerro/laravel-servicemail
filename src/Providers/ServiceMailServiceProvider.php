@@ -3,7 +3,8 @@
 namespace Gsferro\ServiceMail\Providers;
 
 use Gsferro\ServiceMail\Services\ServiceMail;
-use Illuminate\Support\ServiceProvider;
+//use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class ServiceMailServiceProvider extends ServiceProvider
 {

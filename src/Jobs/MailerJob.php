@@ -15,31 +15,18 @@ class MailerJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $view;
-    private $subject;
-    private $to;
-    private $data;
+    /**
+     * @var MailerEvent
+     */
+    public $event;
 
     /**
      * Create a new Job instance.
-     *
-     * @param string $view
-     * @param string $subject
-     * @param string $to
-     * @param $data
-     * @param null $cc
-     * @param null $attach
+     * @param MailerEvent $event
      */
-//    public function __construct(string $view, string $subject, string $to, $data, $cc = null, $attach = null)
     public function __construct(MailerEvent $event)
     {
-
-        /*$this->view    = $view;
-        $this->subject = $subject;
-        $this->to      = $to;
-        $this->data    = $data;*/
-
-        $this->event    = $event;
+        $this->event = $event;
     }
 
     /**
@@ -49,6 +36,10 @@ class MailerJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->event->to)->send(new Mailer($this->event));
+        try {
+            \Mail::to($this->event->to)->send(new Mailer($this->event));
+        } catch (\Exception $e) {
+            dump($e->getMessage());
+        }
     }
 }
