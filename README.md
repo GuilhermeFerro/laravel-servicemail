@@ -1,2 +1,80 @@
 # Laravel ServiceMail
 Service para envio de e-mail via queue easy no Laravel
+
+### Install via composer
+ `composer require gsferro/servicemail`
+
+### Configuração
+- Adicione o ServiceProvider em providers de `app.php`
+ 
+>
+    /*
+    |---------------------------------------------------
+    | ServiceMail
+    |---------------------------------------------------
+    */
+
+    \Gsferro\ServiceMail\Providers\ServiceMailServiceProvider::class,
+    
+### Uso
+``` php
+<?php   
+    servicemail()->send(
+        string $view,
+        string $subject,
+        string $to,
+        $data,
+        ?\DateTime $timeEvent = null,
+        string $attach = null,
+        $cc = null
+    );
+ ```   
+    
+- Gerar migration
+ 1.   php artisan queue:table
+ 2.   php artisan queue:failed-table
+ 
+### Usando database sqlite
+- Crie o banco local
+ 
+ `touch database/database.sqlite`
+   
+- Publish migrations
+> TODO
+    
+- Altere o arquivo `config/database.php`
+>
+    'connections' => [
+        'sqlite' => [
+            'driver'                  => 'sqlite',
+            'database'                => database_path( 'database.sqlite' ),
+            'prefix'                  => '',
+            'foreign_key_constraints' => env( 'DB_FOREIGN_KEYS', true ),
+        ],
+        
+ - Altere o arquivo `config/queue.php`
+>
+     'connections' => [
+         'sqlite' => [
+             'connection' => 'sqlite',
+             'driver' => 'database',
+             'table' => 'jobs',
+             'queue' => 'default',
+             'retry_after' => 90,
+         ],
+ 
+ - Altere o arquivo ``.emv``
+
+> 
+    QUEUE_CONNECTION="sqlite"
+
+#### Rodar migrate
+>
+    php artisan migrate --database=sqlite --path=database/migrations/servicemail
+
+#### Rodar queue
+    php artisan queue:work sqlite
+    
+###### links úteis:
+- https://stackoverflow.com/questions/35535920/laravel-5-how-to-configure-the-queue-database-driver-to-connect-to-a-non-default
+- https://laracasts.com/discuss/channels/laravel/l52-how-i-can-use-differente-db-connection-for-queue
