@@ -16,6 +16,19 @@ Service para envio de e-mail via queue easy no Laravel
 
     \Gsferro\ServiceMail\Providers\ServiceMailServiceProvider::class,
     
+- Adicione em `$listen` o event em `EventServiceProvider.php`
+ 
+>
+    /*
+    |---------------------------------------------------
+    | ServiceMail
+    |---------------------------------------------------
+    */
+     'Gsferro\ServiceMail\Events\MailerEvent' => [
+        'Gsferro\ServiceMail\Listeners\MailerJobListener',
+     ],
+    
+    
 ### Uso
 ``` php
 <?php   

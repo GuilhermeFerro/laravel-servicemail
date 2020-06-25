@@ -32,7 +32,7 @@
                 "Gsferro\\ServiceMail\\Providers\\ServiceMailServiceProvider"
             ],
             "aliases": {
-                "ChartsExcell": "Gsferro\\ServiceMail\\Facades\\ServiceMail"
+                "ServiceMail": "Gsferro\\ServiceMail\\Facades\\ServiceMail"
             }
         }
     }
