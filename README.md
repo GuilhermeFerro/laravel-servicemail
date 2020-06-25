@@ -77,10 +77,15 @@ Service para envio de e-mail via queue easy no Laravel
              'retry_after' => 90,
          ],
  
- - Altere o arquivo ``.emv``
+ - Altere o arquivo ``.env``
 
 > 
     QUEUE_CONNECTION="sqlite"
+
+Ou coloque direto no arquivo `config/queue.php`  
+```php
+'default' => "sqlite",
+```
 
 #### Rodar migrate
 >
