@@ -33,15 +33,9 @@ class ServiceMailServiceProvider extends ServiceProvider
         | Publish
         |---------------------------------------------------
         */
-        // Facades
+
         $this->publishes([
-//            __DIR__.'/Facades/ServiceMail.php' => app_path('Facades/ServiceMail.php'),
-        // Helpers
-//            __DIR__.'/Helpers/servicemail.php' => app_path('Helpers/servicemail.php'),
-        // Providers
-//            __DIR__.'/Providers/ServiceMailServiceProvider.php' => app_path('Providers/ServiceMailServiceProvider.php'),
-        // Services
-//            __DIR__.'/ServicesServices/ServiceMail.php' => app_path('Services/ServiceMail.php'),
-        ]);
+            __DIR__.'/../migrations' => database_path('migrations')
+        ], 'migrations');
     }
 }

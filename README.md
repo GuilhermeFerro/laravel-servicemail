@@ -39,8 +39,9 @@ Service para envio de e-mail via queue easy no Laravel
  
  `touch database/database.sqlite`
    
-- Publish migrations
-> TODO
+- Publish Migrations em migrations/servicemail
+> 
+    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider"
     
 - Altere o arquivo `config/database.php`
 >
