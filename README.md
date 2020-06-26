@@ -58,6 +58,7 @@ Service para envio de e-mail via queue easy no Laravel
     
 - Altere o arquivo `config/database.php`
 >
+``` php
     'connections' => [
         'sqlite' => [
             'driver'                  => 'sqlite',
@@ -65,17 +66,20 @@ Service para envio de e-mail via queue easy no Laravel
             'prefix'                  => '',
             'foreign_key_constraints' => env( 'DB_FOREIGN_KEYS', true ),
         ],
-        
+```
+ 
  - Altere o arquivo `config/queue.php`
 >
+``` php
      'connections' => [
          'sqlite' => [
-             'connection' => 'sqlite',
-             'driver' => 'database',
-             'table' => 'jobs',
-             'queue' => 'default',
-             'retry_after' => 90,
+             'connection'   => 'sqlite',
+             'driver'       => 'database',
+             'table'        => 'jobs',
+             'queue'        => 'default',
+             'retry_after'  => 90,
          ],
+``` 
  
  - Altere o arquivo ``.env``
 
@@ -83,8 +87,10 @@ Service para envio de e-mail via queue easy no Laravel
     QUEUE_CONNECTION="sqlite"
 
 Ou coloque direto no arquivo `config/queue.php`  
-```php
-'default' => "sqlite",
+```php 
+[
+    'default' => "sqlite",
+]
 ```
 
 #### Rodar migrate
