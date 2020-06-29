@@ -34,6 +34,12 @@ class ServiceMailServiceProvider extends ServiceProvider
         |---------------------------------------------------
         */
 
+        // config
+        $this->publishes([
+            __DIR__.'/../config/servicemail.php' => config_path('servicemail.php')
+        ], 'config');
+
+        // migrations
         $this->publishes([
             __DIR__.'/../migrations' => database_path('migrations')
         ], 'migrations');

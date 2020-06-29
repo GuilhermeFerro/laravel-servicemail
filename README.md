@@ -28,6 +28,9 @@ Service para envio de e-mail via queue easy no Laravel
         'Gsferro\ServiceMail\Listeners\MailerJobListener',
      ],
     
+- Publish config
+> 
+    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider" --tags=config    
     
 ### Uso
 ``` php

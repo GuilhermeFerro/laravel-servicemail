@@ -37,7 +37,8 @@ class MailerJob implements ShouldQueue
     public function handle()
     {
         try {
-            \Mail::to($this->event->to)->send(new Mailer($this->event));
+            $to = config('servicemail.redirect') ?? $this->event->to;
+            \Mail::to($to)->send(new Mailer($this->event));
         } catch (\Exception $e) {
             dump($e->getMessage());
         }
