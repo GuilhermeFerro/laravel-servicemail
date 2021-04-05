@@ -30,7 +30,7 @@ Service para envio de e-mail via queue easy no Laravel
     
 - Publish config
 > 
-    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider" --tags=config    
+    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider" --tag=config    
     
 ### Uso
 ``` php
@@ -60,7 +60,7 @@ Service para envio de e-mail via queue easy no Laravel
    
 - Publish Migrations em migrations/servicemail
 > 
-    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider"
+    php artisan vendor:publish --provider="Gsferro\ServiceMail\Providers\ServiceMailServiceProvider"  --tag=migrations
     
 - Altere o arquivo `config/database.php`
 >
