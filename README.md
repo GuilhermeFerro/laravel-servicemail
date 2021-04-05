@@ -50,6 +50,9 @@ Service para envio de e-mail via queue easy no Laravel
  1.   php artisan queue:table
  2.   php artisan queue:failed-table
  
+### Alternativa ao mailtrap
+- set a variavel `SERVICEMAIL_REDIRECT` no .env ou dentro do config/servicemail.php para enviar o email para si como debug/teste
+ 
 ### Usando database sqlite
 - Crie o banco local
  
